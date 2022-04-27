@@ -19,7 +19,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: eclipse-temurin:17.0.3_7-jre
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
