@@ -1,0 +1,44 @@
+Configutation:
+  name: Default
+  Properties:
+    Property:
+    - name: app-log-pattern
+      value: "%d{yyyy-MM-dd HH:mm:ss.SSS} %level thread_name=%t log_type=app-logs %notEmpty{request_id=%X{RID}} %notEmpty{client_id=%X{CID}} %notEmpty{newrelic=%X{NR}} %c{1} - %msg%n"
+    - name: config-log-pattern
+      value: "%d{yyyy-MM-dd HH:mm:ss.SSS} %level thread_name=%t log_type=config-logs %c{1} ------- %m%n"
+  Appenders:
+    Console:
+      - name: CONSOLE
+        target: SYSTEM_OUT
+        PatternLayout:
+          pattern: ${app-log-pattern}
+      - name: CONFIG_CONSOLE
+        target: SYSTEM_OUT
+        PatternLayout:
+          pattern: ${config-log-pattern}
+  Loggers:
+    Logger:
+      - name: ConfigLogger
+        additivity: false
+        level: INFO
+        AppenderRef:
+          - ref: CONFIG_CONSOLE
+      - name: com.example.service
+        additivity: false
+        level: INFO
+        AppenderRef:
+          - ref: CONSOLE
+      - name: org.springframework
+        additivity: false
+        level: WARN
+        AppenderRef:
+          - ref: CONSOLE
+      - name: org.apache
+        additivity: false
+        level: WARN
+        AppenderRef:
+          - ref: CONSOLE
+    Root:
+      level: ERROR
+      AppenderRef:
+        ref: CONSOLE
