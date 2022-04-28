@@ -8,22 +8,21 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 public class SwaggerConfig {
-//TODO: Migrate to https://springdoc.org/#Introduction
-    private static final Logger CONFIG_LOGGER = LogManager.getLogger("ConfigLogger");
+  // TODO: Migrate to https://springdoc.org/#Introduction
+  private static final Logger CONFIG_LOGGER = LogManager.getLogger("ConfigLogger");
 
-    @Bean
-    public Docket api() {
+  @Bean
+  public Docket api() {
 
-        CONFIG_LOGGER.info(" Initializing Docket");
+    CONFIG_LOGGER.info(" Initializing Docket");
 
-        return new Docket(DocumentationType.SWAGGER_2)
-                .select()
-                .apis(RequestHandlerSelectors.any())
-                .paths(PathSelectors.any())
-                .build();
-    }
+    return new Docket(DocumentationType.SWAGGER_2)
+        .select()
+        .apis(RequestHandlerSelectors.any())
+        .paths(PathSelectors.any())
+        .build();
+  }
 }

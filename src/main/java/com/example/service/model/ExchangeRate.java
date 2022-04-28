@@ -2,16 +2,15 @@ package com.example.service.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModelProperty;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.Currency;
+import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Currency;
-import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
