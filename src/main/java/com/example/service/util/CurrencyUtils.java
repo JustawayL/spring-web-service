@@ -1,8 +1,7 @@
 package com.example.service.util;
 
-import lombok.extern.log4j.Log4j2;
-
 import java.util.Currency;
+import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 public class CurrencyUtils {
