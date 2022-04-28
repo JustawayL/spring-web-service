@@ -28,17 +28,7 @@ public class ExchangeRateServiceImpl implements ExchangeRateService {
 
     return CompletableFuture.completedFuture(
             currencyConversionClient.getRates(request.getFrom(), request.getDate()))
-        .thenApply(
-            response -> {
-              if (request.getDate() == null && request.getFrom().toString().equals("USD")) {
-                Optional<Double> rateValue =
-                    response.getRates().entrySet().stream()
-                        .filter(key -> key.getKey().equals("CAD"))
-                        .map(Map.Entry::getValue)
-                        .findFirst();
-              }
-              return filterRates(response, toCurrencies);
-            })
+        .thenApply(response -> filterRates(response, toCurrencies))
         .thenApply(rates -> toConversionResponse(request, rates));
   }
 
